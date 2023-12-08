@@ -23,3 +23,14 @@ resultant table schema
     total_salary (float, 2 dp)
 
     NOTE: Your solution should use pure SQL. Ruby is used within the test cases to do the actual testing.
+
+Solution:
+SELECT 
+  DISTINCT j.job_title,
+  CAST(ROUND(AVG(j.salary),2) AS FLOAT) as average_salary,
+  COUNT(J.ID) as total_people,
+  CAST(ROUND(SUM(j.salary),2) AS FLOAT) as total_salary
+  FROM job j
+  GROUP BY j.job_title
+  ORDER BY average_salary DESC
+  
